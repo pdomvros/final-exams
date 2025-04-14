@@ -81,8 +81,8 @@
       background-color: #4682b4; /* steelblue */
     }
 
-    /* Στυλ του κουμπιού Δείγμα */
-    .sample-button {
+    /* Στυλ του κουμπιού Δείγμα, καθώς και το νέο κουμπί Διευκρινίσεις */
+    .sample-button, .info-button {
       display: inline-block;
       margin-top: 15px;
       padding: 8px 15px;
@@ -95,9 +95,55 @@
       border-radius: 5px;
       text-decoration: none; /* Αν μπει σε <a>, να μη φαίνεται ως link */
     }
-    .sample-button:hover {
+    .sample-button:hover, .info-button:hover {
       background: gold;
       color: black;
+    }
+
+    /* ------------ Στυλ για το modal (αναδυόμενο παράθυρο) ------------ */
+    /* Το ίδιο το modal σε αρχική κατάσταση αόρατο. */
+    .modal {
+      display: none; /* Κρυφό αρχικά */
+      position: fixed;
+      z-index: 999; /* Πάνω από όλα τα στοιχεία */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; /* Αν μεγαλώσει το περιεχόμενο */
+      background-color: rgba(0, 0, 0, 0.5); /* Ημιδιάφανο σκουρόχρωμο φόντο */
+    }
+    /* Το κουτί μέσα στο modal */
+    .modal-content {
+      background-color: #333; /* Λίγο πιο ανοιχτό από το μαύρο του body */
+      color: gold;
+      margin: 10% auto; /* Απόσταση από πάνω και κεντράρισμα */
+      padding: 20px;
+      border: 2px solid gold;
+      width: 80%;
+      max-width: 700px;
+      border-radius: 8px;
+    }
+    /* Κουμπί κλεισίματος */
+    .close-btn {
+      float: right;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: 2px solid gold;
+      background: transparent;
+      color: gold;
+      cursor: pointer;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: -5px 0 10px 10px;
+    }
+    .close-btn:hover {
+      background: gold;
+      color: black;
+    }
+    /* Προαιρετικά, στυλ για τα περιεχόμενα του modal */
+    .modal p {
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -197,7 +243,7 @@
       <strong>Ασκήσεις ή προβλήματα:</strong> Δύο (2) από τρεις (3) ασκήσεις ή προβλήματα.
       Κάθε ένα από τα θέματα των ασκήσεων ή προβλημάτων δεν πρέπει να αποτελείται από δύο ή περισσότερες
       διαφορετικές ασκήσεις ή προβλήματα. Μπορεί όμως κάθε άσκηση ή πρόβλημα να αναλύεται
-      σε βήματα-υποερωτήµατα.
+      σε βήματα-υποερωήματα.
     </p>
     <p>
       Η απάντηση στο θέμα της θεωρίας και η κάθε μια από τις λύσεις των ασκήσεων ή προβλημάτων
@@ -219,12 +265,40 @@
     <p>
       <strong>Β Μέρος:</strong> Τέσσερα ισοδύναμα ερωτήματα εκ των οποίων απαντούν τα δύο.
     </p>
+
+    <!-- Κουμπί "Δείγμα" -->
     <button
       class="sample-button"
       onclick="window.open('https://drive.google.com/file/d/1314RSVUjXOGNPGbIn5WB-ZHZANasQW4K/view?usp=sharing', '_blank')">
       Δείγμα
     </button>
+
+    <!-- Κουμπί "Διευκρινήσεις" που ανοίγει το modal -->
+    <button class="info-button" onclick="openModal()">Διευκρινήσεις</button>
   </details>
+
+  <!-- Modal για τις διευκρινίσεις της Ιστορίας -->
+  <div id="historyModal" class="modal">
+    <div class="modal-content">
+      <!-- Κουμπί κλεισίματος -->
+      <button class="close-btn" onclick="closeModal()">Κλείσιμο</button>
+      <h3 style="margin-top: 0;">Διευκρινήσεις</h3>
+      <p>Στην Α’ Ομάδα μπορεί να υπάρχουν ερωτήσεις:</p>
+      <ul>
+        <li>α) ανάλυσης ιστορικών όρων (π.χ. «θέματα» για τη Β’ Γυμνασίου, «Εγκυκλοπαίδεια» για τη Γ’ Γυμνασίου)</li>
+        <li>β) αντιστοίχισης (π.χ. πρόσωπα με ιστορικά γεγονότα, συνθήκες ή συντάγματα ή ιστορικά γεγονότα με χρονολογίες, πρόσωπα με την ιδιότητα ή την προσφορά τους στο ιστορικό γίγνεσθαι)</li>
+        <li>γ) Σωστού ή Λάθους / συμπλήρωσης κενού</li>
+        <li>δ) σύντομης ανάπτυξης ή σχολιασμού ιστορικής πηγής – παραθέματος</li>
+      </ul>
+      <p>Στη Β’ Ομάδα μπορεί να υπάρχουν ερωτήσεις:</p>
+      <ul>
+        <li>α) Συσχέτιση ιστορικών γνώσεων με τις πληροφορίες ενός ή περισσοτέρων ιστορικών πηγών</li>
+        <li>β) Σχολιασμός γελοιογραφίας, ζωγραφικού πίνακα, χάρτη κ.λπ. με συγκεκριμένα ιστορικά γεγονότα ή πρόσωπα, ιστορικά σταυρόλεξα</li>
+        <li>γ) Διάκριση ανάμεσα στην αντικειμενική ιστορική γνώση και τις υποκειμενικές απόψεις που αναφέρονται μέσα σε κάποια ιστορική πηγή</li>
+        <li>δ) Σύγκριση δράσης ανάμεσα σε δύο πολιτικά πρόσωπα (π.χ. Τρικούπης- Δηλιγιάννης, Ελ. Βενιζέλος - βασιλιάς Κωνσταντίνος Α’), διαφορές – ομοιότητες μεταξύ διπλωματικών εγγράφων ή Συνταγμάτων</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- Αρχαία Ελληνική Γλώσσα και Γραμματεία -->
   <details class="ancient-greek">
@@ -300,6 +374,27 @@
     </button>
   </details>
 
+  <!-- Λίγο JavaScript για να ανοιγοκλείνει το modal της Ιστορίας -->
+  <script>
+    // Βρίσκουμε το ίδιο το modal
+    var modal = document.getElementById("historyModal");
+
+    // Συνάρτηση για να ανοίξει το modal
+    function openModal() {
+      modal.style.display = "block";
+    }
+
+    // Συνάρτηση για να κλείσει το modal
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    // Αν κάποιος κάνει κλικ έξω από το περιεχόμενο του modal, κλείνει
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
-
