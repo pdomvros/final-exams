@@ -17,6 +17,7 @@
       font-family: 'Comfortaa', sans-serif;
       text-align: justify;   /* Δικαιολογημένη στοίχιση */
       line-height: 1.8;      /* Μεγαλύτερο διάστιχο */
+      font-size: 110%;       /* Αυξάνει ΟΛΑ τα μεγέθη γραμματοσειράς κατά ~10% */
     }
 
     h1, h2, h3, p {
@@ -81,7 +82,7 @@
       background-color: #4682b4; /* steelblue */
     }
 
-    /* Στυλ του κουμπιού Δείγμα, καθώς και το νέο κουμπί Διευκρινίσεις */
+    /* Στυλ του κουμπιού Δείγμα και Διευκρινίσεις */
     .sample-button, .info-button {
       display: inline-block;
       margin-top: 15px;
@@ -93,7 +94,7 @@
       color: gold;
       cursor: pointer;
       border-radius: 5px;
-      text-decoration: none; /* Αν μπει σε <a>, να μη φαίνεται ως link */
+      text-decoration: none; 
     }
     .sample-button:hover, .info-button:hover {
       background: gold;
@@ -101,7 +102,6 @@
     }
 
     /* ------------ Στυλ για το modal (αναδυόμενο παράθυρο) ------------ */
-    /* Το ίδιο το modal σε αρχική κατάσταση αόρατο. */
     .modal {
       display: none; /* Κρυφό αρχικά */
       position: fixed;
@@ -113,18 +113,16 @@
       overflow: auto; /* Αν μεγαλώσει το περιεχόμενο */
       background-color: rgba(0, 0, 0, 0.5); /* Ημιδιάφανο σκουρόχρωμο φόντο */
     }
-    /* Το κουτί μέσα στο modal */
     .modal-content {
-      background-color: #333; /* Λίγο πιο ανοιχτό από το μαύρο του body */
+      background-color: #333; 
       color: gold;
-      margin: 10% auto; /* Απόσταση από πάνω και κεντράρισμα */
+      margin: 10% auto;
       padding: 20px;
       border: 2px solid gold;
       width: 80%;
       max-width: 700px;
       border-radius: 8px;
     }
-    /* Κουμπί κλεισίματος */
     .close-btn {
       float: right;
       font-size: 1.2em;
@@ -141,7 +139,6 @@
       background: gold;
       color: black;
     }
-    /* Προαιρετικά, στυλ για τα περιεχόμενα του modal */
     .modal p {
       margin-bottom: 10px;
     }
@@ -376,7 +373,7 @@
 
   <!-- Λίγο JavaScript για να ανοιγοκλείνει το modal της Ιστορίας -->
   <script>
-    // Βρίσκουμε το ίδιο το modal
+    // Βρίσκουμε το modal
     var modal = document.getElementById("historyModal");
 
     // Συνάρτηση για να ανοίξει το modal
@@ -389,7 +386,7 @@
       modal.style.display = "none";
     }
 
-    // Αν κάποιος κάνει κλικ έξω από το περιεχόμενο του modal, κλείνει
+    // Κλείσιμο όταν γίνεται κλικ έξω από το κουτί του modal
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
