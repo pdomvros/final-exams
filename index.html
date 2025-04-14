@@ -17,7 +17,7 @@
       font-family: 'Comfortaa', sans-serif;
       text-align: justify;   /* Δικαιολογημένη στοίχιση */
       line-height: 1.8;      /* Μεγαλύτερο διάστιχο */
-      font-size: 110%;       /* Αυξάνει ΟΛΑ τα μεγέθη γραμματοσειράς κατά ~10% */
+      font-size: 110%;       /* Αυξάνει όλα τα μεγέθη γραμματοσειράς κατά ~10% */
     }
 
     h1, h2, h3, p {
@@ -82,7 +82,7 @@
       background-color: #4682b4; /* steelblue */
     }
 
-    /* Στυλ του κουμπιού Δείγμα και Διευκρινίσεις */
+    /* Στυλ των κουμπιών "Δείγμα", "Διευκρινήσεις", κ.λπ. */
     .sample-button, .info-button {
       display: inline-block;
       margin-top: 15px;
@@ -94,7 +94,7 @@
       color: gold;
       cursor: pointer;
       border-radius: 5px;
-      text-decoration: none; 
+      text-decoration: none;
     }
     .sample-button:hover, .info-button:hover {
       background: gold;
@@ -272,6 +272,13 @@
 
     <!-- Κουμπί "Διευκρινήσεις" που ανοίγει το modal -->
     <button class="info-button" onclick="openModal()">Διευκρινήσεις</button>
+
+    <!-- ΝΕΟ Κουμπί "Σχεδιαγράμματα Α Γυμνασίου" που ανοίγει σε νέο tab -->
+    <button
+      class="info-button"
+      onclick="window.open('https://eclass11.sch.gr/modules/ebook/show.php/1901051468/4004172/4005336,4007391/unit=4241792', '_blank')">
+      Σχεδιαγράμματα Α Γυμνασίου
+    </button>
   </details>
 
   <!-- Modal για τις διευκρινίσεις της Ιστορίας -->
@@ -371,17 +378,14 @@
     </button>
   </details>
 
-  <!-- Λίγο JavaScript για να ανοιγοκλείνει το modal της Ιστορίας -->
+  <!-- JavaScript για το modal της Ιστορίας -->
   <script>
-    // Βρίσκουμε το modal
-    var modal = document.getElementById("historyModal");
+    var modal = document.getElementById("historyModal"); // Το ίδιο το modal
 
-    // Συνάρτηση για να ανοίξει το modal
     function openModal() {
       modal.style.display = "block";
     }
 
-    // Συνάρτηση για να κλείσει το modal
     function closeModal() {
       modal.style.display = "none";
     }
