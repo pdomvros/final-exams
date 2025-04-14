@@ -82,7 +82,7 @@
       background-color: #4682b4; /* steelblue */
     }
 
-    /* Στυλ των κουμπιών "Δείγμα", "Διευκρινήσεις", κ.λπ. */
+    /* Στυλ των κουμπιών ("Δείγμα", "Διευκρινήσεις") */
     .sample-button, .info-button {
       display: inline-block;
       margin-top: 15px;
@@ -94,7 +94,7 @@
       color: gold;
       cursor: pointer;
       border-radius: 5px;
-      text-decoration: none;
+      text-decoration: none; 
     }
     .sample-button:hover, .info-button:hover {
       background: gold;
@@ -154,7 +154,7 @@
     <div class="director">Διευθυντής 1ου Γυμνασίου Πυλαίας</div>
   </div>
 
-  <!-- Γενικές πληροφορίες (Χωρίς το κουμπί "Δείγμα") -->
+  <!-- Γενικές πληροφορίες -->
   <details class="general">
     <summary>Γενικές πληροφορίες 📢ℹ️🤓</summary>
     <p>
@@ -195,7 +195,7 @@
     </button>
   </details>
 
-  <!-- Φυσική (Επικαιροποιημένο κείμενο) -->
+  <!-- Φυσική -->
   <details class="physics">
     <summary>Φυσική ⚛️🔭🧲</summary>
     <p>
@@ -273,7 +273,7 @@
     <!-- Κουμπί "Διευκρινήσεις" που ανοίγει το modal -->
     <button class="info-button" onclick="openModal()">Διευκρινήσεις</button>
 
-    <!-- ΝΕΟ Κουμπί "Σχεδιαγράμματα Α Γυμνασίου" που ανοίγει σε νέο tab -->
+    <!-- Κουμπί "Σχεδιαγράμματα Α Γυμνασίου" -->
     <button
       class="info-button"
       onclick="window.open('https://eclass11.sch.gr/modules/ebook/show.php/1901051468/4004172/4005336,4007391/unit=4241792', '_blank')">
@@ -348,6 +348,16 @@
       <em>Δεύτερο θέμα:</em> Δομή και γλώσσα – 4 μονάδες<br>
       <em>Τρίτο θέμα:</em> Παραγωγή γραπτού λόγου (200-300 λέξεις) – 10 μονάδες
     </p>
+
+    <!-- ΝΕΕΣ ΠΛΗΡΟΦΟΡΙΕΣ για τη Νέα Ελληνική Γραμματεία -->
+    <p style="margin-top: 15px;">
+      <strong>Νέα Ελληνική Γραμματεία</strong><br>
+      Κείμενο διδαγμένο με εισαγωγικό σημείωμα<br><br>
+      <em>Πρώτο θέμα:</em> Κατανόηση – 6 μονάδες<br>
+      <em>Δεύτερο θέμα:</em> Δομή και γλώσσα – 6 μονάδες<br>
+      <em>Τρίτο θέμα:</em> Παραγωγή γραπτού λόγου, ανταπόκρισης ή δημιουργικής γραφής – 8 μονάδες
+    </p>
+
     <button
       class="sample-button"
       onclick="window.open('https://drive.google.com/file/d/1cOwz31kCDss5Pdwts0R1i6UDRquLYq6f/view?usp=sharing', '_blank')">
@@ -390,7 +400,7 @@
       modal.style.display = "none";
     }
 
-    // Κλείσιμο όταν γίνεται κλικ έξω από το κουτί του modal
+    // Κλείσιμο όταν γίνεται κλικ έξω από το περιεχόμενο του modal
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
